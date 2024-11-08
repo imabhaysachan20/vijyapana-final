@@ -48,11 +48,11 @@ function Hero() {
       <div className='h-screen relative '>
       <Image 
   src={img} 
-  
-  width={1200} 
-  height={700} 
+  layout='fill'
+  objectFit='cover'
+  objectPosition='center'
   quality={100} 
-  className="w-full h-full object-cover md:object-center" 
+  className="w-full h-full object-cover" 
   alt="hero" 
 />          </div>
   </CarouselItem>
