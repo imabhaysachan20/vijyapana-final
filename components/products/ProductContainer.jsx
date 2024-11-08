@@ -17,8 +17,8 @@ function ProductContainer({ products, setVisible, setActiveProduct }) {
       {
         opacity: 1,
         y: 0,
-        duration: 1.5,
-        stagger: 0.7,
+        duration: 0.6,
+        stagger: 0.4,
         ease: "power2.out",
         scrollTrigger: {
           trigger: sectionRef.current,
