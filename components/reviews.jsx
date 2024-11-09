@@ -54,7 +54,7 @@ const TestimonialCard = ({ imageSrc, name, company, testimonial }) => {
         </div>
       </div>
       <blockquote className="mt-4 text-muted-foreground">
-        "{testimonial}"
+      &quot;{testimonial}&quot;
       </blockquote>
     </CardContent>
   </Card>

@@ -91,7 +91,7 @@ export default function MarqueeCards() {
     <Carousel className="my-24">
       <CarouselContent className="">
       {services.map((card, index) => (
-        <CarouselItem className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+        <CarouselItem key={index} className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
   <MarqueeCard key={`${card.id}-${index}`} title={card.name} images={card.images} />
   </CarouselItem>
       ))}
