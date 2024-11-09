@@ -3,7 +3,9 @@ import Hero from "@/components/hero";
 import ImageSlideShow from "@/components/ImageSlideShow";
 import Imgtext from "@/components/Imgtext";
 import Products from "@/components/products";
+
 import Services from "@/components/services/index";
+import Testimonials from "@/components/testimonials";
 import Image from "next/image";
 export default function Home() {
   return (<>
@@ -13,6 +15,7 @@ export default function Home() {
    <Imgtext text="We have creative solution<br />for every Business needs."/>
     <Services/>
     <ImageSlideShow/>
+    <Testimonials/>
     </>
   );
 }

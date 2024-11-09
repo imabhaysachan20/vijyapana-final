@@ -4,6 +4,8 @@ import { useState, useEffect ,useRef} from 'react'
 import { Card, CardContent, CardDescription } from "@/components/ui/card"
 import { getServices } from '@/lib/contentful'
 import { Skeleton } from '../ui/skeleton'
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../ui/carousel'
+import Container from '../container'
 
 // Sample data for the cards
 
@@ -35,7 +37,7 @@ const ImageSlideshow = ({ images }) => {
 
 const MarqueeCard = ({ title, images }) => {
   return (
-    <Card className="w-[300px] mx-4 my-2 flex-shrink-0 shadow-sm">
+    <Card className="lg:w-[300px] md:w-[260px] w-[300px] mx-auto my-2 shadow-sm">
       <CardContent className="p-0">
         <ImageSlideshow images={images} />
         <h3 className="text-md font-semibold p-4 text-center uppercase">{title}</h3>
@@ -67,23 +69,38 @@ export default function MarqueeCards() {
   }
 
   return (
-    <div 
-      className="w-full my-24 overflow-hidden bg-background"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-    >
-      <div 
-        className={`inline-flex animate-marquee`} //${isPaused ? '' : 'animate-marquee'}
-        style={{ animationPlayState: isPaused ? 'paused' : 'running' }}
-      >
-        {services.map((card, index) => (
-          <MarqueeCard key={`${card.id}-${index}`} title={card.name} images={card.images} />
-        ))}
-        {services.map((card, index) => (
-          <MarqueeCard key={`${card.id}-${index}`} title={card.name} images={card.images} />
-        ))}
+    // <div 
+    //   className="w-full my-24 overflow-hidden bg-background"
+    //   onMouseEnter={() => setIsPaused(true)}
+    //   onMouseLeave={() => setIsPaused(false)}
+    // >
+    //   <div 
+    //     className={`inline-flex animate-marquee`} //${isPaused ? '' : 'animate-marquee'}
+    //     style={{ animationPlayState: isPaused ? 'paused' : 'running' }}
+    //   >
+    //     {services.map((card, index) => (
+    //       <MarqueeCard key={`${card.id}-${index}`} title={card.name} images={card.images} />
+    //     ))}
+    //     {services.map((card, index) => (
+    //       <MarqueeCard key={`${card.id}-${index}`} title={card.name} images={card.images} />
+    //     ))}
         
-      </div>
-    </div>
+    //   </div>
+    // </div>
+    <Container>
+    <Carousel className="my-24">
+      <CarouselContent className="">
+      {services.map((card, index) => (
+        <CarouselItem className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+  <MarqueeCard key={`${card.id}-${index}`} title={card.name} images={card.images} />
+  </CarouselItem>
+      ))}
+      
+      </CarouselContent>
+      <CarouselNext/>
+      <CarouselPrevious/>
+    </Carousel>
+    
+      </Container>
   )
 }

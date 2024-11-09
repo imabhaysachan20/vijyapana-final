@@ -8,7 +8,7 @@ const nextConfig = {
           },
           {
             protocol: 'https',
-            hostname: 'shia-theme.myshopify.com', // Replace with the domain you want to allow
+            hostname: 'i.pravatar.cc', // Replace with the domain you want to allow
           }]
         }
 };
