@@ -4,8 +4,8 @@ import MarqueeCards from "@/components/reviews";
 
 function Testimonials() {
   return (
-    <div>
-      <SectionTitle text={"Testimonials"}></SectionTitle>
+    <div className='mb-12'>
+      <SectionTitle text={"Our Clients"}></SectionTitle>
       <MarqueeCards/>
     </div>
   )

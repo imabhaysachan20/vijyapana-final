@@ -62,25 +62,25 @@ const TestimonialCard = ({ imageSrc, name, company, testimonial }) => {
 
 export default function MarqueeCards() {
   const [isPaused, setIsPaused] = useState(false)
-  const [services,setServices] = useState([])
+  // const [services,setServices] = useState([])
   
-  useEffect(()=>{
-    const get = async()=>{
-      const res = await getServices()
-      setServices(res);
-    }
-    get()
-  },[])
+  // useEffect(()=>{
+  //   const get = async()=>{
+  //     const res = await getServices()
+  //     setServices(res);
+  //   }
+  //   get()
+  // },[])
   
-  if (services.length==0) {
-    return <div className='flex my-28'>{new Array(6).fill().map((_, index) => (
-      <Card key={index} className="w-[300px] mx-4 my-2 flex-shrink-0">
-        <CardContent className="p-0">
-          <Skeleton className="w-full h-[200px]" />
-          <Skeleton className="h-8 mt-4 mx-4" />
-        </CardContent>
-      </Card>))}</div>
-  }
+  // if (services.length==0) {
+  //   return <div className='flex my-28'>{new Array(6).fill().map((_, index) => (
+  //     <Card key={index} className="w-[300px] mx-4 my-2 flex-shrink-0">
+  //       <CardContent className="p-0">
+  //         <Skeleton className="w-full h-[200px]" />
+  //         <Skeleton className="h-8 mt-4 mx-4" />
+  //       </CardContent>
+  //     </Card>))}</div>
+  // }
 
   return (
     <div 
