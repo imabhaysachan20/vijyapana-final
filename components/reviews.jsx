@@ -89,11 +89,11 @@ export default function MarqueeCards() {
         style={{ animationPlayState: isPaused ? 'paused' : 'running' }}
       >
         
-        {images.map((img)=>{
-          return <img src={img} className="h-auto w-auto"/>
+        {images.map((img,idx)=>{
+          return <img key={idx} src={img} className="h-auto w-auto"/>
         })}
-        {images.map((img)=>{
-          return <img src={img}/>
+        {images.map((img,idx)=>{
+          return <img key={idx} src={img}/>
         })}
         
         
