@@ -59,7 +59,7 @@ function Sidebar() {
             <Link href="/">Home</Link>
           </li>
           <li className="py-2 hover:bg-gray-200 cursor-pointer" onClick={() => toggleExpand('collections')}>
-            Collections
+            Services
           </li>
           {expanded === 'collections' && (
             <ul className="flex flex-col pl-4 space-y-2">
