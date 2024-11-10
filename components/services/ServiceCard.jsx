@@ -32,14 +32,14 @@ const ImageSlideshow = ({ images }) => {
   }
 
   return (
-    <div className="relative w-full h-[100px] sm:h-[120px] md:h-[150px] lg:h-[180px] overflow-hidden rounded-lg my-2">
+    <div className="relative w-full h-[250px] overflow-hidden rounded-lg my-2">
       {images.map((src, index) => (
         <img
           key={index}
           src={src}
           alt={`Slide ${index + 1}`}
           onClick={handleImageClick}
-          className={`slideshow-image-${index} absolute top-0 left-0 w-full h-full object-cover transition-transform duration-1000 transform 
+          className={`slideshow-image-${index} absolute top-0 left-0 w-full h-full object-cover object-center transition-transform duration-1000 transform 
             ${index === currentImageIndex ? 'scale-100' : 'scale-105'} 
             ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'} 
             hover:scale-110 cursor-pointer`}
@@ -63,8 +63,8 @@ const MarqueeCard = ({ title, images }) => {
           ease: "power2.out", 
           scrollTrigger: {
             trigger: cardRef.current,
-            start: "top 95%", 
-            end: "top 10%",   
+            start: "top bottom", 
+            end: "+=800",   
             toggleActions: "play reverse play reverse",
           }
         }
