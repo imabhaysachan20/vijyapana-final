@@ -3,7 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 import { useState, useEffect ,useRef} from 'react'
 import { Card, CardContent, CardDescription } from "@/components/ui/card"
-import { getServices } from '@/lib/contentful'
+import { getClientLogos } from '@/lib/contentful'
 import { Skeleton } from './ui/skeleton'
 
 // Sample data for the cards
@@ -62,54 +62,40 @@ const TestimonialCard = ({ imageSrc, name, company, testimonial }) => {
 
 export default function MarqueeCards() {
   const [isPaused, setIsPaused] = useState(false)
-  // const [services,setServices] = useState([])
-  
-  // useEffect(()=>{
-  //   const get = async()=>{
-  //     const res = await getServices()
-  //     setServices(res);
-  //   }
-  //   get()
-  // },[])
-  
-  // if (services.length==0) {
-  //   return <div className='flex my-28'>{new Array(6).fill().map((_, index) => (
-  //     <Card key={index} className="w-[300px] mx-4 my-2 flex-shrink-0">
-  //       <CardContent className="p-0">
-  //         <Skeleton className="w-full h-[200px]" />
-  //         <Skeleton className="h-8 mt-4 mx-4" />
-  //       </CardContent>
-  //     </Card>))}</div>
-  // }
+  const [images,setImages] = useState([])
+  useEffect(()=>{
+    async function get(){
+    const res = await getClientLogos();
+    setImages(res[0].images)
+  }
+  get()
+},[])
+
+  if (images.length===0) {
+    return <div className="w-full flex items-center justify-center bg-gray-100">
+      
+    <Skeleton className="w-full h-[200px]" />
+  </div>
+  }
 
   return (
     <div 
-      className="w-full my-24 overflow-hidden bg-background"
+      className="w-full my-36 overflow-hidden bg-background"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
       <div 
-        className={`inline-flex gap-x-8 animate-marquee`} //${isPaused ? '' : 'animate-marquee'}
+        className={`inline-flex gap-x-8 animate-marquee h-[50px] md:h-[65px] xl:h-[70px]`} //${isPaused ? '' : 'animate-marquee'}
         style={{ animationPlayState: isPaused ? 'paused' : 'running' }}
       >
-        {testimonials.map((testimonial, index) => (
-        <TestimonialCard
-          key={index}
-          imageSrc={testimonial.imageSrc}
-          name={testimonial.name}
-          company={testimonial.company}
-          testimonial={testimonial.testimonial}
-        />
-      ))}
-        {testimonials.map((testimonial, index) => (
-        <TestimonialCard
-          key={index}
-          imageSrc={testimonial.imageSrc}
-          name={testimonial.name}
-          company={testimonial.company}
-          testimonial={testimonial.testimonial}
-        />
-      ))}
+        
+        {images.map((img)=>{
+          return <img src={img} className="h-auto w-auto"/>
+        })}
+        {images.map((img)=>{
+          return <img src={img}/>
+        })}
+        
         
       </div>
     </div>

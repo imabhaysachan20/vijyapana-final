@@ -32,7 +32,7 @@ function Hero() {
 
   if (images.length===0) {
     return <div className="w-full flex items-center justify-center bg-gray-100">
-    <Skeleton className="w-full h-full" />
+    <Skeleton className="w-full h-[250px] sm:h-[275px] md:h-[300px] lg:h-[500px] 2xl:h-[600px]" />
   </div>
   }
   return (
