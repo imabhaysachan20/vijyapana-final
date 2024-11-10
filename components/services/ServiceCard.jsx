@@ -7,7 +7,6 @@ import { Skeleton } from '../ui/skeleton'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger)
 }
@@ -37,7 +36,6 @@ const ImageSlideshow = ({ images }) => {
   )
 }
 
-
 const MarqueeCard = ({ title, images }) => {
   const cardRef = useRef(null)
 
@@ -55,17 +53,33 @@ const MarqueeCard = ({ title, images }) => {
             start: "top 95%", 
             end: "top 10%",   
             toggleActions: "play reverse play reverse",
-          
           }
         }
       )
     }
   }, [])
 
+  useEffect(() => {
+    if (cardRef.current) {
+      gsap.to(cardRef.current, {
+        scale: 1.05, 
+        boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
+        duration: 0.3,
+        ease: "power2.out",
+        paused: true,
+        onHover: true,
+        toggleActions: "play reverse play reverse",
+        scrollTrigger: {
+          trigger: cardRef.current,
+        },
+      });
+    }
+  }, []);
+
   return (
     <Card 
       ref={cardRef} 
-      className="w-full mx-2 my-4 shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105 hover:z-10"
+      className="w-full mx-2 my-4 shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105 hover:translate-y-1 hover:z-10"
     >
       <CardContent className="p-0">
         <ImageSlideshow images={images} />
@@ -74,7 +88,6 @@ const MarqueeCard = ({ title, images }) => {
     </Card>
   )
 }
-
 
 export default function MarqueeCards() {
   const [services, setServices] = useState([])
@@ -104,7 +117,6 @@ export default function MarqueeCards() {
 
   return (
     <div className="w-full my-24 px-4 lg:px-12">
-     
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {services.map((card, index) => (
           <MarqueeCard key={`${card.id}-${index}`} title={card.name} images={card.images} />
