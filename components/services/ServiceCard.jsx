@@ -11,7 +11,7 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger)
 }
 
-
+// ImageSlideshow component with hover and click effect
 const ImageSlideshow = ({ images }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
@@ -22,14 +22,27 @@ const ImageSlideshow = ({ images }) => {
     return () => clearInterval(interval)
   }, [images])
 
+  const handleImageClick = () => {
+    // Example effect on click, can be customized further
+    gsap.to(`.slideshow-image-${currentImageIndex}`, {
+      scale: 1.2,
+      duration: 0.3,
+      ease: "power2.out",
+    })
+  }
+
   return (
-    <div className="relative w-full h-[100px] sm:h-[120px] md:h-[150px] lg:h-[180px] overflow-hidden rounded-lg">
+    <div className="relative w-full h-[100px] sm:h-[120px] md:h-[150px] lg:h-[180px] overflow-hidden rounded-lg my-2">
       {images.map((src, index) => (
         <img
           key={index}
           src={src}
           alt={`Slide ${index + 1}`}
-          className={`absolute top-0 left-0 w-full h-full object-cover transition-transform duration-1000 transform ${index === currentImageIndex ? 'scale-100' : 'scale-105'} ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}
+          onClick={handleImageClick}
+          className={`slideshow-image-${index} absolute top-0 left-0 w-full h-full object-cover transition-transform duration-1000 transform 
+            ${index === currentImageIndex ? 'scale-100' : 'scale-105'} 
+            ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'} 
+            hover:scale-110 cursor-pointer`}
         />
       ))}
     </div>
@@ -58,23 +71,6 @@ const MarqueeCard = ({ title, images }) => {
       )
     }
   }, [])
-
-  useEffect(() => {
-    if (cardRef.current) {
-      gsap.to(cardRef.current, {
-        scale: 1.05, 
-        boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
-        duration: 0.3,
-        ease: "power2.out",
-        paused: true,
-        onHover: true,
-        toggleActions: "play reverse play reverse",
-        scrollTrigger: {
-          trigger: cardRef.current,
-        },
-      });
-    }
-  }, []);
 
   return (
     <Card 
@@ -117,7 +113,7 @@ export default function MarqueeCards() {
 
   return (
     <div className="w-full my-24 px-4 lg:px-12">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((card, index) => (
           <MarqueeCard key={`${card.id}-${index}`} title={card.name} images={card.images} />
         ))}
