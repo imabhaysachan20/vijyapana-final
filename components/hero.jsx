@@ -31,7 +31,7 @@ function Hero() {
 },[])
 
   if (images.length===0) {
-    return <div className="h-screen w-full flex items-center justify-center bg-gray-100">
+    return <div className="w-full flex items-center justify-center bg-gray-100">
     <Skeleton className="w-full h-full" />
   </div>
   }
@@ -41,18 +41,19 @@ function Hero() {
     }} plugins={[
       Autoplay({
         delay: 3000,
-      }),]} className="h-screen mt-[106px] md:mt-[64px] border">
+      }),]} className="mt-[106px] md:mt-[64px] border">
   <CarouselContent>
     {images.map((img,idx)=>{
       return <CarouselItem key={idx}>
-      <div className='h-screen relative '>
+      <div className=' relative '>
       <Image 
   src={img} 
   
-  width={1200} 
-  height={700} 
-  quality={100} 
-  className="w-full h-full object-cover md:object-center" 
+  
+  width={1200}
+  height={400}
+  quality={100}
+  className="w-full h-full object-contain md:object-center" 
   alt="hero" 
 />          </div>
   </CarouselItem>
@@ -62,7 +63,7 @@ function Hero() {
   </CarouselContent>
   <CarouselPrevious />
   <CarouselNext />
-  <TalkToUsBTN className={"absolute right-4 md:right-6 bottom-6 md:bottom-6"}/>
+  <TalkToUsBTN className={"absolute text-xs w-[94px] h-[25px] shadow-none md:w-auto md:h-auto md:shadow-md right-4 md:right-6 bottom-2 md:bottom-6"}/>
 </Carousel>
 
 

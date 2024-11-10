@@ -6,7 +6,7 @@ function TalkToUsBTN({className}) {
   return (
       <Link href={'/contact'}    >
       
-      <Button className={`font-thin tracking-wider shadow-black shadow-sm ${className}`}><CiPhone/>Talk To US</Button>
+      <Button className={`font-thin tracking-wider shadow-black shadow-sm ${className}`}><CiPhone className="-mr-1"/>Talk To US</Button>
       </Link>
   )
 }
