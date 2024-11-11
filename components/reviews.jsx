@@ -85,16 +85,17 @@ export default function MarqueeCards() {
       onMouseLeave={() => setIsPaused(false)}
     >
       <div 
-        className={`inline-flex gap-x-8 animate-marquee h-[50px] md:h-[65px] xl:h-[70px]`} //${isPaused ? '' : 'animate-marquee'}
+        className={`inline-flex gap-x-8 animate-marquee `} //${isPaused ? '' : 'animate-marquee'}
         style={{ animationPlayState: isPaused ? 'paused' : 'running' }}
       >
         {images.map((img,idx)=>{
-          return <img key={idx} src={img}/>
+          return <div key={idx} className="w-[150px] flex gap-x-1 items-center"><img className="w-full object-contain" src={img}/></div>
         })}
         {images.map((img,idx)=>{
-          return <img key={idx} src={img}/>
+          return <div key={idx} className="w-[150px] flex gap-x-1 items-center"><img className="w-full object-contain" src={img}/></div>
         })}
-        
+
+
         
       </div>
     </div>

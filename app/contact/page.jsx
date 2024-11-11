@@ -1,6 +1,6 @@
 // pages/contact.js
 "use client";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { Button, } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@radix-ui/react-dropdown-menu";
@@ -9,9 +9,12 @@ import { Label } from "@radix-ui/react-dropdown-menu";
 // pages/contact.js
 import Image from "next/image";
 import { toast } from "react-toastify";
+import Link from "next/link";
 
 export default function ContactUs() {
+  const [isSubmitting,setIsSubmitting] = useState(false);
   const handleSubmit = useCallback((e) => {
+    setIsSubmitting(true)
     e.preventDefault();
   
     // Use FormData to gather data from the form
@@ -32,11 +35,12 @@ export default function ContactUs() {
       })
   })
     .then((response) => toast.success("Submitted"))
-  
+    .finally(()=>{setIsSubmitting(false)})
     // Here you can send formValues to your API or backend
     // Example: await fetch('/api/submit', { method: 'POST', body: JSON.stringify(formValues) });
   
     // Optionally, reset the form after submission
+
     e.target.reset();
   }, []);
   return (
@@ -72,6 +76,7 @@ export default function ContactUs() {
           id="name"
           name="name" // Include name attribute to work with FormData
           type="text"
+          required
           placeholder="Your Name"
           className="w-full mt-2 p-3 bg-white text-gray-900 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400"
         />
@@ -83,6 +88,7 @@ export default function ContactUs() {
         <input
           id="phone"
           maxLength={10}
+          required
           name="phone" // Include name attribute to work with FormData
           type="tel"
           placeholder="Your Phone Number"
@@ -96,6 +102,7 @@ export default function ContactUs() {
         <input
           id="email"
           name="email" // Include name attribute to work with FormData
+          required
           type="email"
           placeholder="Your Email"
           className="w-full mt-2 p-3 bg-white text-gray-900 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400"
@@ -103,6 +110,7 @@ export default function ContactUs() {
       </div>
       <div>
         <button
+        disabled={isSubmitting}
           type="submit"
           className="w-full bg-gray-900 text-white py-3 rounded-lg font-semibold text-lg transition duration-300 hover:bg-gray-700"
         >
@@ -114,7 +122,7 @@ export default function ContactUs() {
           {/* Contact Details */}
           <div className="mt-10 text-gray-600 space-y-3">
             <p>
-              <strong>Support Email:</strong> support@vijyapana.com
+              <strong>Support Email:</strong> <Link href={"mailto://support@vijyapana.com"}>Write to us at: support@vijyapana.com</Link>
             </p>
             <p>
               <strong>WhatsApp:</strong> +91 9889519102

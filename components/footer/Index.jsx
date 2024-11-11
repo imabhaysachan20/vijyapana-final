@@ -30,7 +30,7 @@ function Index() {
     </div>
     </div>
     <div className='flex justify-center items-center mt-8 text-center md:w-1/2  md:mt-0 text-xl'>
-        <h1>Write to us at: vijyapana@gmail.com</h1>
+        <Link href={"mailto://support@vijyapana.com"}><h1>Write to us at: support@vijyapana.com</h1></Link>
     </div>
     </footer>
     <footer className='border-t-2 mt-14 py-2 pb-4 flex flex-col items-center justify-between'>
