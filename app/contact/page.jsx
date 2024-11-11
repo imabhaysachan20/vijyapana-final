@@ -122,7 +122,7 @@ export default function ContactUs() {
           {/* Contact Details */}
           <div className="mt-10 text-gray-600 space-y-3">
             <p>
-              <strong>Support Email:</strong> <Link href={"mailto://support@vijyapana.com"}>Write to us at: support@vijyapana.com</Link>
+              <strong>Support Email:</strong> <Link href={"mailto:support@vijyapana.com"}>Write to us at: support@vijyapana.com</Link>
             </p>
             <p>
               <strong>WhatsApp:</strong> +91 9889519102
