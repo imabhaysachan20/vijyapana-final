@@ -1,6 +1,7 @@
 "use client"
 import React, { useState,useEffect } from 'react'
 import { getServices } from '@/lib/contentful'
+
 import { IoLogoWhatsapp } from "react-icons/io";
 import Hamburger from './hamburger';
 import {v4 as uuid} from "uuid"
@@ -81,7 +82,7 @@ function Navbar() {
       </div>
      </li>
      <li className='cursor-pointer'><Link href={"/about"}> About</Link></li>
-      <li className='cursor-pointer'><Link href={"/career"}>Carrer</Link></li>
+      <li className='cursor-pointer'><Link href={"/career"}>Career</Link></li>
       </ul>
         </div>
         <header className='flex justify-center items-center md:-translate-x-24'>

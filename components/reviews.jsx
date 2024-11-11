@@ -88,9 +88,8 @@ export default function MarqueeCards() {
         className={`inline-flex gap-x-8 animate-marquee h-[50px] md:h-[65px] xl:h-[70px]`} //${isPaused ? '' : 'animate-marquee'}
         style={{ animationPlayState: isPaused ? 'paused' : 'running' }}
       >
-        
         {images.map((img,idx)=>{
-          return <img key={idx} src={img} className="h-auto w-auto"/>
+          return <img key={idx} src={img}/>
         })}
         {images.map((img,idx)=>{
           return <img key={idx} src={img}/>

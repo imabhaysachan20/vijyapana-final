@@ -2,7 +2,9 @@ import Index from '@/components/footer/Index'
 import {Montserrat} from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import { ToastContainer, toast } from 'react-toastify';
 
+import 'react-toastify/dist/ReactToastify.css';
 
 const montserrat = Montserrat({
   subsets: ['latin'],   // Define language subsets (e.g., latin, latin-ext)
@@ -22,7 +24,7 @@ export default function RootLayout({ children }) {
       <body
       className={`${montserrat.variable} antialiased`}
       >
-        
+        <ToastContainer />
         <Navbar/>
         {children}
         <Index/>
