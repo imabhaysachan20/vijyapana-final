@@ -1,9 +1,10 @@
 import Form from "@/components/applicationForm"
 const page = () => {
-    return (
+    return (<>
         <div className="mt-24">
         <Form/>
         </div>
+        </>
     )
 }
 
